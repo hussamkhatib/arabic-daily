@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
+/* ── Shared: strip abbr underlines react-calendar adds everywhere ── */
+.calendar-wrapper abbr,
+.review-calendar abbr {
+  text-decoration: none !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ── Student calendar (quick-access custom date picker) ── */
+.calendar-wrapper .react-calendar {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  line-height: 1.5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.calendar-wrapper .react-calendar__tile {
+  padding: 0.5em 0.25em;
+  border-radius: 6px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.calendar-wrapper .react-calendar__tile--active,
+.calendar-wrapper .react-calendar__tile--active:enabled:hover,
+.calendar-wrapper .react-calendar__tile--active:enabled:focus {
+  background: #10b981;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.calendar-wrapper .react-calendar__tile--now {
+  background: #ecfdf5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calendar-wrapper .react-calendar__tile:enabled:hover {
+  background: #f0fdf4;
+}
+
+/* ── Review page calendar ── */
+.review-calendar .react-calendar {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+/* Navigation row */
+.review-calendar .react-calendar__navigation {
+  height: 44px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.review-calendar .react-calendar__navigation button {
+  min-width: 36px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.review-calendar .react-calendar__navigation__label {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: #111827;
+  pointer-events: none;
+}
+
+.review-calendar .react-calendar__navigation button:enabled:hover,
+.review-calendar .react-calendar__navigation button:enabled:focus {
+  background: #f1f5f9;
+}
+
+/* Weekday headers */
+.review-calendar .react-calendar__month-view__weekdays {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.review-calendar .react-calendar__month-view__weekdays__weekday {
+  padding: 4px 0;
+  text-align: center;
+}
+
+/* Day tiles */
+.review-calendar .react-calendar__tile {
+  padding: 0.55em 0.25em;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #374151;
+  transition: background 0.1s;
+}
+
+/* Neighbouring month days */
+.review-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  color: #d1d5db;
+}
+
+/* Today */
+.review-calendar .react-calendar__tile--now {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* Selected */
+.review-calendar .react-calendar__tile--active,
+.review-calendar .react-calendar__tile--active:enabled:hover,
+.review-calendar .react-calendar__tile--active:enabled:focus {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.review-calendar .react-calendar__tile:enabled:hover {
+  background: #eff6ff;
 }
