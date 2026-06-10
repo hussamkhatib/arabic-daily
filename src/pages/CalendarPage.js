@@ -3,6 +3,7 @@ import { format, addDays, subDays } from 'date-fns';
 import Layout from '../components/Layout';
 import { useSessions } from '../hooks/useSessions';
 import { getDayNumber, calcStreak, calcMissed } from '../lib/utils';
+import ProgressTracker from '../components/ProgressTracker';
 
 export default function CalendarPage() {
   const navigate = useNavigate();
@@ -81,6 +82,8 @@ export default function CalendarPage() {
           })}
         </div>
       )}
+
+      <ProgressTracker />
     </Layout>
   );
 }

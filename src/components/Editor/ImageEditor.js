@@ -1,10 +1,13 @@
 import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { fabric } from 'fabric';
 
-const ImageEditor = forwardRef(function ImageEditor({ imageUrl }, ref) {
+const ImageEditor = forwardRef(function ImageEditor({ imageUrl, onModified }, ref) {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const fabricRef = useRef(null);
+  const onModifiedRef = useRef(onModified);
+
+  useEffect(() => { onModifiedRef.current = onModified; }, [onModified]);
 
   useImperativeHandle(ref, () => ({
     getCanvas: () => fabricRef.current,
@@ -22,8 +25,17 @@ const ImageEditor = forwardRef(function ImageEditor({ imageUrl }, ref) {
       width,
       height,
       backgroundColor: '#f3f4f6',
+      isDrawingMode: true,
     });
+    fc.freeDrawingBrush.color = '#ef4444';
+    fc.freeDrawingBrush.width = 4;
     fabricRef.current = fc;
+
+    const notify = () => onModifiedRef.current?.();
+    fc.on('object:added', notify);
+    fc.on('object:modified', notify);
+    fc.on('object:removed', notify);
+    fc.on('path:created', notify);
 
     let cancelled = false;
 
