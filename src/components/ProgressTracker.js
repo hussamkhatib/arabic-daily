@@ -1,5 +1,5 @@
 // Update these two constants as you progress through the course
-const DONE_THROUGH = 39;   // last fully completed lesson
+const DONE_THROUGH = 40;   // last fully completed lesson
 const CURRENT = 40;        // lesson currently in progress (not yet complete)
 
 const TOTAL = 70;
